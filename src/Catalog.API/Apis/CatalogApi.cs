@@ -163,8 +163,12 @@ public static class CatalogApi
         [AsParameters] CatalogServices services,
         [Description("List of ids for catalog items to return")] int[] ids)
     {
-        var items = await services.Context.CatalogItems.Where(item => ids.Contains(item.Id)).ToListAsync();
+        List<int> itemIds = ids.ToList();  // Convert to List<int>
+        var items = await services.Context.CatalogItems
+            .Where(item => itemIds.Contains(item.Id))
+            .ToListAsync();
         return TypedResults.Ok(items);
+
     }
 
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest, "application/problem+json")]
