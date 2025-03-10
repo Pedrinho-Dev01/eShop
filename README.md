@@ -10,6 +10,7 @@ Prometheus: http://localhost:9090
 Grafana:    http://localhost:3001
 
 # Setting Up Grafana
+0. Go to: http://localhost:3001
 1. Go to Connections -> Data Sources -> Add new datasource -> Prometheus
 2. Connection: http://prometheus:9090
 3. Scroll down -> Save and test
