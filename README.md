@@ -1,15 +1,15 @@
-## How to build and run eShop
+# How to build and run eShop
 Press play on visual studio
 
-## Running Grafana and Prometheus
+# Running Grafana and Prometheus
 Navigate to: eShop/observability
 Run: docker-compose up -d
 
-# Local Connections
+### Local Connections
 Prometheus: http://localhost:9090
 Grafana:    http://localhost:3001
 
-## Setting Up Grafana
+# Setting Up Grafana
 1. Go to Connections -> Data Sources -> Add new datasource -> Prometheus
 2. Connection: http://prometheus:9090
 3. Scroll down -> Save and test
@@ -20,5 +20,5 @@ Grafana:    http://localhost:3001
 7. Edit dashboard -> Reselect prometheus connection
 8. Refresh dashboard
 
-## Missing Deliverables
+# Missing Deliverables
 Load Simulation
