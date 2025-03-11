@@ -2,7 +2,6 @@
 using OpenTelemetry.Trace;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Metrics;
-using OpenTelemetry.Exporter.Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +12,13 @@ builder.Services.AddOpenTelemetry()
             .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("OrderingAPI"))
             .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
-            .AddSqlClientInstrumentation();
+            .AddSqlClientInstrumentation()
+            .AddGrpcClientInstrumentation()
+            .AddJaegerExporter(options =>
+            {
+                options.AgentHost = "localhost";
+                options.AgentPort = 6831;
+            });
     });
 
 builder.Services.AddOpenTelemetry()

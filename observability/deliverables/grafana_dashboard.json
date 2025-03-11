@@ -23,8 +23,69 @@
   "panels": [
     {
       "datasource": {
+        "type": "jaeger",
+        "uid": "defilpug9w9a8c"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Duration"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": []
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "spanFilters": {
+          "criticalPathOnly": false,
+          "matchesOnly": false,
+          "serviceNameOperator": "=",
+          "spanNameOperator": "=",
+          "tags": [
+            {
+              "id": "eb3e4dc9-138",
+              "operator": "="
+            }
+          ]
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "jaeger",
+            "uid": "defilpug9w9a8c"
+          },
+          "queryType": "search",
+          "refId": "A",
+          "service": "OrderingAPI"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "traces"
+    },
+    {
+      "datasource": {
         "type": "prometheus",
-        "uid": "eeffbmc7d8tfke"
+        "uid": "fefil9vuqr11ca"
       },
       "fieldConfig": {
         "defaults": {
@@ -79,38 +140,13 @@
             ]
           }
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "{__name__=\"kestrel_active_connections\", instance=\"host.docker.internal:5224\", job=\"ordering-api\", network_transport=\"tcp\", network_type=\"ipv4\", otel_scope_name=\"Microsoft.AspNetCore.Server.Kestrel\", server_address=\"127.0.0.1\", server_port=\"53432\"}"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 13,
         "w": 22,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 1,
       "options": {
@@ -138,32 +174,6 @@
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "befbwjtdwcg00f"
-          },
-          "editorMode": "code",
-          "expr": "http_client_active_requests{}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "befbwjtdwcg00f"
-          },
-          "editorMode": "code",
-          "expr": "http_client_open_connections{}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "C"
         }
       ],
       "title": "Panel Title",
@@ -185,6 +195,6 @@
   "timezone": "browser",
   "title": "New dashboard",
   "uid": "cefbwl5lkshkwf",
-  "version": 2,
+  "version": 6,
   "weekStart": ""
 }
